@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
-using mpSettings;
-using ModPlus;
+using ModPlusAPI;
+using ModPlusAPI.Windows;
 
 namespace mpBlkReplace
 {
@@ -13,19 +13,12 @@ namespace mpBlkReplace
         public Settings()
         {
             InitializeComponent();
-            MpWindowHelpers.OnWindowStartUp(
-                this,
-                MpSettings.GetValue("Settings", "MainSet", "Theme"),
-                MpSettings.GetValue("Settings", "MainSet", "AccentColor"),
-                MpSettings.GetValue("Settings", "MainSet", "BordersType")
-                );
-            bool b;
-            ChkLayer.IsChecked = bool.TryParse(MpSettings.GetValue("Settings", "mpBlkReplace", "layer"), out b) && b;
-            ChkTransform.IsChecked = bool.TryParse(MpSettings.GetValue("Settings", "mpBlkReplace", "transform"), out b) && b;
-            ChkScales.IsChecked = bool.TryParse(MpSettings.GetValue("Settings", "mpBlkReplace", "scales"), out b) && b;
-            ChkRotation.IsChecked = bool.TryParse(MpSettings.GetValue("Settings", "mpBlkReplace", "rotation"), out b) && b;
-            int i;
-            CbCleanBD.SelectedIndex = int.TryParse(MpSettings.GetValue("Settings", "mpBlkReplace", "cleanBD"), out i) ? i : 0;
+            this.OnWindowStartUp();
+            ChkLayer.IsChecked = bool.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "layer"), out bool b) && b;
+            ChkTransform.IsChecked = bool.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "transform"), out b) && b;
+            ChkScales.IsChecked = bool.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "scales"), out b) && b;
+            ChkRotation.IsChecked = bool.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "rotation"), out b) && b;
+            CbCleanBD.SelectedIndex = int.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "cleanBD"), out int i) ? i : 0;
         }
 
         private void Chk_OnChecked_OnUnchecked(object sender, System.Windows.RoutedEventArgs e)
@@ -37,13 +30,13 @@ namespace mpBlkReplace
                 switch (chkb.Name)
                 {
                     case "ChkLayer":
-                        MpSettings.SetValue("Settings", "mpBlkReplace", "layer", checkedValue.ToString(), true);
+                        UserConfigFile.SetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "layer", checkedValue.ToString(), true);
                         break;
                     case "ChkScales":
-                        MpSettings.SetValue("Settings", "mpBlkReplace", "scales", checkedValue.ToString(), true);
+                        UserConfigFile.SetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "scales", checkedValue.ToString(), true);
                         break;
                     case "ChkTransform":
-                        MpSettings.SetValue("Settings", "mpBlkReplace", "transform", checkedValue.ToString(), true);
+                        UserConfigFile.SetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "transform", checkedValue.ToString(), true);
                         if (checkedValue)
                         {
                             ChkRotation.IsEnabled = false;
@@ -52,7 +45,7 @@ namespace mpBlkReplace
                         else ChkRotation.IsEnabled = true;
                         break;
                     case "ChkRotation":
-                        MpSettings.SetValue("Settings", "mpBlkReplace", "rotation",
+                        UserConfigFile.SetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "rotation",
                             chkb.IsEnabled ? checkedValue.ToString() : "False", true);
                         break;
                 }
@@ -68,7 +61,7 @@ namespace mpBlkReplace
         {
             var cb = (ComboBox) sender;
             if(cb != null && cb.SelectedIndex != -1)
-                MpSettings.SetValue("Settings", "mpBlkReplace", "cleanBD", cb.SelectedIndex.ToString(), true);
+                UserConfigFile.SetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "cleanBD", cb.SelectedIndex.ToString(), true);
         }
 
         private void Settings_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

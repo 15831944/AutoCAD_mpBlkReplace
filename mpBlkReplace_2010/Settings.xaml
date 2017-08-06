@@ -7,6 +7,7 @@
                       ShowMinButton="False" ShowInTaskbar="False" ShowSystemMenuOnRightClick="False"
                       Topmost ="True" WindowStartupLocation="CenterScreen"
                       SizeToContent="WidthAndHeight" WindowStyle="None" MouseLeftButtonDown="Settings_OnMouseLeftButtonDown"
+                      SaveWindowPosition="True" ResizeMode="NoResize"
              >
     <Window.Resources>
         <ResourceDictionary>
@@ -17,13 +18,11 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ModPlusAPI;component/Windows/WinResources/Styles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            <Style x:Key="BtStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource SquareMetroButton}">
-                <Setter Property="BorderThickness" Value="1" />
-            </Style>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
+    <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -68,7 +67,7 @@
                 <ComboBoxItem Content="Не удалять"></ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <Button Grid.Row="7" Margin="2" Style="{StaticResource BtStyle}"
+        <Button Grid.Row="7" Margin="2"
                 VerticalAlignment="Center" HorizontalAlignment="Center"
                 Content="Закрыть" ToolTip="Все настройки сохраняются автоматически"
                 Name="BtOk" Click="BtOk_OnClick"></Button>

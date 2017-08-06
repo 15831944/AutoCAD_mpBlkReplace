@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
-using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.EditorInput;
-using Autodesk.AutoCAD.Geometry;
-#if ac2010
+﻿#if ac2010
 using AcApp = Autodesk.AutoCAD.ApplicationServices.Application;
 #elif ac2013
 using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
 #endif
+using System.Collections.Generic;
+using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.Runtime;
-using mpMsg;
-using mpSettings;
+using ModPlusAPI;
+using ModPlusAPI.Windows;
 
 namespace mpBlkReplace
 {
@@ -95,7 +95,7 @@ namespace mpBlkReplace
             }
             catch (System.Exception exception)
             {
-                MpExWin.Show(exception);
+                ExceptionBox.Show(exception);
             }
         }
 
@@ -182,7 +182,7 @@ namespace mpBlkReplace
             }
             catch (System.Exception exception)
             {
-                MpExWin.Show(exception);
+                ExceptionBox.Show(exception);
             }
         }
 
@@ -216,7 +216,7 @@ namespace mpBlkReplace
             }
             catch (System.Exception exception)
             {
-                MpExWin.Show(exception);
+                ExceptionBox.Show(exception);
             }
         }
 
@@ -253,13 +253,11 @@ namespace mpBlkReplace
 
         private static void GetSettings()
         {
-            bool b;
-            _layer = bool.TryParse(MpSettings.GetValue("Settings", "mpBlkReplace", "layer"), out b) && b;
-            _transform = bool.TryParse(MpSettings.GetValue("Settings", "mpBlkReplace", "transform"), out b) && b;
-            _scales = bool.TryParse(MpSettings.GetValue("Settings", "mpBlkReplace", "scales"), out b) && b;
-            _rotation = bool.TryParse(MpSettings.GetValue("Settings", "mpBlkReplace", "rotation"), out b) && b;
-            int i;
-            _cleanBd = int.TryParse(MpSettings.GetValue("Settings", "mpBlkReplace", "cleanBD"), out i) ? i : 0;
+            _layer = bool.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "layer"), out bool b) && b;
+            _transform = bool.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "transform"), out b) && b;
+            _scales = bool.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "scales"), out b) && b;
+            _rotation = bool.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "rotation"), out b) && b;
+            _cleanBd = int.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "cleanBD"), out int i) ? i : 0;
         }
 
         [CommandMethod("ModPlus", "mpBlkReplace", CommandFlags.UsePickSet)]
