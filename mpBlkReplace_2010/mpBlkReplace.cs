@@ -263,6 +263,7 @@ namespace mpBlkReplace
         [CommandMethod("ModPlus", "mpBlkReplace", CommandFlags.UsePickSet)]
         public static void Main()
         {
+            Statistic.SendCommandStarting(new Interface());
             GetSettings();
             var repeat = true;
             var doc = AcApp.DocumentManager.MdiActiveDocument;

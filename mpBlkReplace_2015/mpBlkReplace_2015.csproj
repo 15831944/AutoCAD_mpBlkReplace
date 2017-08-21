@@ -43,15 +43,15 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="MahApps.Metro">
-      <HintPath>..\..\..\..\..\..\..\ModPlus\MahApps.Metro.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\ModPlus\Extensions\MahApps.Metro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ModPlusAPI">
-      <HintPath>..\..\..\..\..\..\..\ModPlus\ModPlusAPI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\ModPlus\Extensions\ModPlusAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ModPlus_2015">
-      <HintPath>..\..\..\..\..\..\..\ModPlus\ModPlus_2015.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\ModPlus\Extensions\ModPlus_2015.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
