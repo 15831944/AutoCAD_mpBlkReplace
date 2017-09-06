@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ModPlusAPI.Interfaces;
 
 namespace mpBlkReplace
@@ -8,7 +9,9 @@ namespace mpBlkReplace
         public SupportedProduct SupportedProduct => SupportedProduct.AutoCAD;
         public string Name => "mpBlkReplace";
         public string AvailProductExternalVersion => "2010";
-        public string ClassName => string.Empty;
+        public string FullClassName => string.Empty;
+        public string AppFullClassName => string.Empty;
+        public Guid AddInId => Guid.Empty;
         public string LName => "Замена блоков";
         public string Description => "Функция позволяет производить быструю замену блоков в чертеже на блок-образчик";
         public string Author => "Пекшев Александр aka Modis";
