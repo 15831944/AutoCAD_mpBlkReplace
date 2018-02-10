@@ -20,6 +20,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/ModPlusAPI;component/Windows/WinResources/Styles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <XmlDataProvider x:Key="Lang" Source="E:/ModPlus/Languages/en-US.xml" XPath="ModPlus/mpBlkReplace"/>
         </ResourceDictionary>
     </Window.Resources>
     <Grid Margin="5">
@@ -33,23 +34,23 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Margin="5" Text="Для копируемых блоков повторять:"></TextBlock>
-        <CheckBox Grid.Row="1" Content="слой заменяемого блока"
+        <TextBlock Grid.Row="0" Margin="5" Text="{Binding Source={StaticResource Lang}, XPath=h7}"></TextBlock>
+        <CheckBox Grid.Row="1" Content="{Binding Source={StaticResource Lang}, XPath=h8}"
                   Name="ChkLayer" Margin="10,2,2,2"
                   Checked="Chk_OnChecked_OnUnchecked"
                   Unchecked="Chk_OnChecked_OnUnchecked"
                   ></CheckBox>
-        <CheckBox Grid.Row="2" Content="масштаб заменяемого блока"
+        <CheckBox Grid.Row="2" Content="{Binding Source={StaticResource Lang}, XPath=h9}"
                   Name="ChkScales" Margin="10,2,2,2"
                   Checked="Chk_OnChecked_OnUnchecked"
                   Unchecked="Chk_OnChecked_OnUnchecked"
                   ></CheckBox>
-        <CheckBox Grid.Row="3" Content="трансформации (зеркало и поворот) заменяемого блока"
+        <CheckBox Grid.Row="3" Content="{Binding Source={StaticResource Lang}, XPath=h10}"
                   Name="ChkTransform" Margin="10,2,2,2"
                   Checked="Chk_OnChecked_OnUnchecked"
                   Unchecked="Chk_OnChecked_OnUnchecked"
                   ></CheckBox>
-        <CheckBox Grid.Row="4" Content="только поворот заменяемого блока"
+        <CheckBox Grid.Row="4" Content="{Binding Source={StaticResource Lang}, XPath=h11}"
                   Name="ChkRotation" Margin="10,2,2,2"
                   Checked="Chk_OnChecked_OnUnchecked"
                   Unchecked="Chk_OnChecked_OnUnchecked"
@@ -57,19 +58,20 @@
         <Separator Grid.Row="5" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource AccentColorBrush}"
                    Margin="2,0,2,0"></Separator>
         <StackPanel Grid.Row="6" Orientation="Horizontal">
-            <TextBlock Text="Удаление замененных блоков из БД:" Margin="2"
+            <TextBlock Text="{Binding Source={StaticResource Lang}, XPath=h12}" Margin="2"
                        VerticalAlignment="Center"></TextBlock>
             <ComboBox Margin="2" VerticalAlignment="Center" Name="CbCleanBD"
                       Width="180"
                       SelectionChanged="CbCleanBD_OnSelectionChanged">
-                <ComboBoxItem Content="Спрашивать"></ComboBoxItem>
-                <ComboBoxItem Content="Удалять автоматически"></ComboBoxItem>
-                <ComboBoxItem Content="Не удалять"></ComboBoxItem>
+                <ComboBoxItem Content="{Binding Source={StaticResource Lang}, XPath=h13}"></ComboBoxItem>
+                <ComboBoxItem Content="{Binding Source={StaticResource Lang}, XPath=h14}"></ComboBoxItem>
+                <ComboBoxItem Content="{Binding Source={StaticResource Lang}, XPath=h15}"></ComboBoxItem>
             </ComboBox>
         </StackPanel>
         <Button Grid.Row="7" Margin="2"
                 VerticalAlignment="Center" HorizontalAlignment="Center"
-                Content="Закрыть" ToolTip="Все настройки сохраняются автоматически"
+                Content="{Binding Source={StaticResource Lang}, XPath=h16}"
+                ToolTip="{Binding Source={StaticResource Lang}, XPath=h17}"
                 Name="BtOk" Click="BtOk_OnClick"></Button>
     </Grid>
 </controls:MetroWindow>

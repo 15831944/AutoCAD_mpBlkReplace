@@ -16,6 +16,8 @@ namespace mpBlkReplace
 {
     public class MpBlkReplace
     {
+        private const string LangItem = "mpBlkReplace";
+
         private static bool _scales;
         private static bool _transform;
         private static bool _layer;
@@ -30,8 +32,8 @@ namespace mpBlkReplace
             var blkNamesToRemove = new List<string>();
             try
             {
-                var peo = new PromptEntityOptions("\nВыберите заменяемый блок: ");
-                peo.SetRejectMessage("\nReject:");
+                var peo = new PromptEntityOptions("\n" + Language.GetItem(LangItem, "h1") + ": ");
+                peo.SetRejectMessage("\n" + Language.GetItem(LangItem, "wrong"));
                 peo.AllowNone = false;
                 peo.AllowObjectOnLockedLayer = true;
                 peo.AddAllowedClass(typeof(BlockReference), true);
@@ -39,7 +41,7 @@ namespace mpBlkReplace
                 if (per.Status != PromptStatus.OK) return;
                 var secondBlockId = per.ObjectId;
 
-                peo.Message = "\nВыберите заменяющий блок: ";
+                peo.Message = "\n" + Language.GetItem(LangItem, "h2") + ": ";
                 per = ed.GetEntity(peo);
                 if (per.Status != PromptStatus.OK) return;
                 var firstBlockId = per.ObjectId;
@@ -115,8 +117,8 @@ namespace mpBlkReplace
                     {
                         AllowDuplicates = false,
                         AllowSubSelections = false,
-                        MessageForAdding = "\nВыберите несколько блоков для их замены: ",
-                        MessageForRemoval = "\nИсключите ненужные блоки: "
+                        MessageForAdding = "\n" + Language.GetItem(LangItem, "h3") + ": ",
+                        MessageForRemoval = "\n" + Language.GetItem(LangItem, "h4") + ": "
                     };
 
                     var acTypValAr = new TypedValue[1];
@@ -130,11 +132,11 @@ namespace mpBlkReplace
                 if (selSet.Count > 0)
                 {
                     var peo = new PromptEntityOptions(string.Empty);
-                    peo.SetRejectMessage("\nReject:");
+                    peo.SetRejectMessage("\n" + Language.GetItem(LangItem, "wrong"));
                     peo.AllowNone = false;
                     peo.AllowObjectOnLockedLayer = true;
                     peo.AddAllowedClass(typeof(BlockReference), true);
-                    peo.Message = "\nВыберите заменяющий блок: ";
+                    peo.Message = "\n" + Language.GetItem(LangItem, "h2") + ": ";
                     var per = ed.GetEntity(peo);
                     if (per.Status != PromptStatus.OK) return;
                     var firstBlockId = per.ObjectId;
@@ -198,12 +200,12 @@ namespace mpBlkReplace
                 {
                     var pko = new PromptKeywordOptions(string.Empty)
                     {
-                        Message = "\nУдалить замененные блоки из базы чертежа?: ",
+                        Message = "\n" + Language.GetItem(LangItem, "h5") + ": ",
                         AllowNone = false,
                         AppendKeywordsToMessage = true
                     };
-                    pko.Keywords.Add("Yes", "Да");
-                    pko.Keywords.Add("No", "Нет");
+                    pko.Keywords.Add("Yes", Language.GetItem(LangItem, "yes"));
+                    pko.Keywords.Add("No", Language.GetItem(LangItem, "no"));
                     var pkr = ed.GetKeywords(pko);
                     if (pkr.Status != PromptStatus.OK) return;
                     if (pkr.StringResult.Equals("Yes"))
@@ -211,7 +213,7 @@ namespace mpBlkReplace
                         RemoveBlocks(blkNames, doc, db);
                     }
                 }
-                if(_cleanBd.Equals(1))
+                if (_cleanBd.Equals(1))
                     RemoveBlocks(blkNames, doc, db);
             }
             catch (System.Exception exception)
@@ -275,13 +277,13 @@ namespace mpBlkReplace
 
                 var pko = new PromptKeywordOptions(string.Empty)
                 {
-                    Message = "\nВариант работы функции: ",
+                    Message = "\n" + Language.GetItem(LangItem, "h6") + ": ",
                     AllowNone = false,
                     AppendKeywordsToMessage = true
                 };
-                pko.Keywords.Add("replaceSelected", "заменитьВыбранные");
-                pko.Keywords.Add("replaceAll", "заменитьПодобные");
-                pko.Keywords.Add("seTtings", "Настройки");
+                pko.Keywords.Add("replaceSelected", Language.GetItem(LangItem, "k1"));
+                pko.Keywords.Add("replaceAll", Language.GetItem(LangItem, "k2"));
+                pko.Keywords.Add("seTtings", Language.GetItem(LangItem, "k3"));
 
                 var pkr = ed.GetKeywords(pko);
                 if (pkr.Status != PromptStatus.OK) return;

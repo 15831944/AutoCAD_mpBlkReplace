@@ -1,14 +1,10 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
 using ModPlusAPI;
-using ModPlusAPI.Windows;
 using ModPlusAPI.Windows.Helpers;
 
 namespace mpBlkReplace
 {
-    /// <summary>
-    /// Логика взаимодействия для Settings.xaml
-    /// </summary>
     public partial class Settings
     {
         public Settings()
