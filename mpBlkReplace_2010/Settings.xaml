@@ -1,31 +1,22 @@
-﻿<controls:MetroWindow x:Class="mpBlkReplace.Settings"
+﻿<mpc:BaseMetroWindow x:Class="mpBlkReplace.Settings"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-                      ShowCloseButton="False" ShowIconOnTitleBar="False"
-                      ShowMaxRestoreButton="False" ShowTitleBar="False"
-                      ShowMinButton="False" ShowInTaskbar="False" ShowSystemMenuOnRightClick="False"
-                      Topmost ="True" WindowStartupLocation="CenterScreen"
-                      SizeToContent="WidthAndHeight" WindowStyle="None" MouseLeftButtonDown="Settings_OnMouseLeftButtonDown"
-                      SaveWindowPosition="True" ResizeMode="NoResize"
-             >
+                      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:mpc="clr-namespace:ModPlusAPI.Windows.Mpc;assembly=ModPlusAPI"
+                      ShowCloseButton="False" TitlebarHeight="0"
+                      ShowSystemMenuOnRightClick="False"
+                      Topmost ="True" SizeToContent="WidthAndHeight" WindowStyle="None"
+                      ResizeMode="NoResize" MouseLeftButtonDown="Settings_OnMouseLeftButtonDown">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/ModPlusAPI;component/Windows/WinResources/Styles.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/ModPlusAPI;component/Windows/WinResources/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <XmlDataProvider x:Key="Lang" Source="E:/ModPlus/Languages/en-US.xml" XPath="ModPlus/mpBlkReplace"/>
         </ResourceDictionary>
     </Window.Resources>
     <Grid Margin="5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -55,9 +46,7 @@
                   Checked="Chk_OnChecked_OnUnchecked"
                   Unchecked="Chk_OnChecked_OnUnchecked"
                   ></CheckBox>
-        <Separator Grid.Row="5" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource AccentColorBrush}"
-                   Margin="2,0,2,0"></Separator>
-        <StackPanel Grid.Row="6" Orientation="Horizontal">
+        <StackPanel Grid.Row="5" Orientation="Horizontal">
             <TextBlock Text="{Binding Source={StaticResource Lang}, XPath=h12}" Margin="2"
                        VerticalAlignment="Center"></TextBlock>
             <ComboBox Margin="2" VerticalAlignment="Center" Name="CbCleanBD"
@@ -68,10 +57,11 @@
                 <ComboBoxItem Content="{Binding Source={StaticResource Lang}, XPath=h15}"></ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <Button Grid.Row="7" Margin="2"
+        <Button Grid.Row="6" Margin="2"
                 VerticalAlignment="Center" HorizontalAlignment="Center"
                 Content="{Binding Source={StaticResource Lang}, XPath=h16}"
                 ToolTip="{Binding Source={StaticResource Lang}, XPath=h17}"
                 Name="BtOk" Click="BtOk_OnClick"></Button>
     </Grid>
-</controls:MetroWindow>
+</mpc:BaseMetroWindow>
+

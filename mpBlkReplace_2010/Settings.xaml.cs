@@ -1,7 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
 using ModPlusAPI;
-using ModPlusAPI.Windows.Helpers;
 
 namespace mpBlkReplace
 {
@@ -10,7 +9,6 @@ namespace mpBlkReplace
         public Settings()
         {
             InitializeComponent();
-            this.OnWindowStartUp();
             ChkLayer.IsChecked = bool.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "layer"), out bool b) && b;
             ChkTransform.IsChecked = bool.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "transform"), out b) && b;
             ChkScales.IsChecked = bool.TryParse(UserConfigFile.GetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "scales"), out b) && b;
