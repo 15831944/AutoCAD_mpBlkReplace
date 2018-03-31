@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mpBlkReplace_2010", "mpBlkReplace_2010\mpBlkReplace_2010.csproj", "{4F814AC8-31CA-40C4-8DD7-BD51A0213C1F}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mpBlkReplace_2017", "mpBlkReplace_2017\mpBlkReplace_2017.csproj", "{88FEA438-98B2-43D2-9C89-1DB033FDC57E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mpBlkReplace_2018", "mpBlkReplace_2018\mpBlkReplace_2018.csproj", "{0954A125-4371-4ED2-8557-D680F77BDD7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mpBlkReplace_2019", "mpBlkReplace_2019\mpBlkReplace_2019.csproj", "{ABB7E751-F663-4EF0-9474-688BED98BC3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,8 +65,15 @@ Global
 		{0954A125-4371-4ED2-8557-D680F77BDD7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0954A125-4371-4ED2-8557-D680F77BDD7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0954A125-4371-4ED2-8557-D680F77BDD7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABB7E751-F663-4EF0-9474-688BED98BC3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABB7E751-F663-4EF0-9474-688BED98BC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABB7E751-F663-4EF0-9474-688BED98BC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABB7E751-F663-4EF0-9474-688BED98BC3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7BFD446-32FD-43F0-835E-6612DDABF75E}
 	EndGlobalSection
 EndGlobal
