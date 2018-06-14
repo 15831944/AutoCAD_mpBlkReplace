@@ -8,7 +8,7 @@ namespace mpBlkReplace
     {
         public SupportedProduct SupportedProduct => SupportedProduct.AutoCAD;
         public string Name => "mpBlkReplace";
-        public string AvailProductExternalVersion => "2013";
+        public string AvailProductExternalVersion => "2010";
         public string FullClassName => string.Empty;
         public string AppFullClassName => string.Empty;
         public Guid AddInId => Guid.Empty;
@@ -29,6 +29,6 @@ namespace mpBlkReplace
 
     public static class VersionData
     {
-        public static string FuncVersion = "2013";
+        public static string FuncVersion = "2010";
     }
 }
