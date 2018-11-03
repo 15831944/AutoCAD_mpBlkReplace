@@ -1,9 +1,8 @@
-﻿using System.Windows.Controls;
-using System.Windows.Input;
-using ModPlusAPI;
-
-namespace mpBlkReplace
+﻿namespace mpBlkReplace
 {
+    using System.Windows.Controls;
+    using ModPlusAPI;
+
     public partial class Settings
     {
         public Settings()
@@ -57,11 +56,6 @@ namespace mpBlkReplace
             var cb = (ComboBox) sender;
             if(cb != null && cb.SelectedIndex != -1)
                 UserConfigFile.SetValue(UserConfigFile.ConfigFileZone.Settings, "mpBlkReplace", "cleanBD", cb.SelectedIndex.ToString(), true);
-        }
-
-        private void Settings_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
         }
     }
 }

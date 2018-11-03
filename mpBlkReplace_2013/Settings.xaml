@@ -1,18 +1,16 @@
-﻿<mpc:BaseMetroWindow x:Class="mpBlkReplace.Settings"
+﻿<mps:ModPlusWindow x:Class="mpBlkReplace.Settings"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                      xmlns:mpc="clr-namespace:ModPlusAPI.Windows.Mpc;assembly=ModPlusAPI"
-                      ShowCloseButton="False" TitlebarHeight="0"
-                      ShowSystemMenuOnRightClick="False"
-                      Topmost ="True" SizeToContent="WidthAndHeight" WindowStyle="None"
-                      ResizeMode="NoResize" MouseLeftButtonDown="Settings_OnMouseLeftButtonDown">
+                      xmlns:mps="https://modplus.org/winfx/xaml/controls"
+                      ShowCloseButton="False" ShowTitleBar="False"
+                      Topmost ="True" SizeToContent="WidthAndHeight" 
+                      ResizeMode="NoResize">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/ModPlusAPI;component/Windows/WinResources/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/ModPlusStyle;component/Styles/Controls.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <XmlDataProvider x:Key="Lang" Source="E:/ModPlus/Languages/en-US.xml" XPath="ModPlus/mpBlkReplace"/>
+            <XmlDataProvider x:Key="Lang" Source="E:/ModPlus/Languages/en-US.xml" XPath="ModPlus/mpBlkReplace" IsAsynchronous="False"/>
         </ResourceDictionary>
     </Window.Resources>
     <Grid Margin="5">
@@ -25,43 +23,42 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Margin="5" Text="{Binding Source={StaticResource Lang}, XPath=h7}"></TextBlock>
+        <TextBlock Grid.Row="0" Margin="{DynamicResource ModPlusDefaultMargin}"
+                   Text="{Binding Source={StaticResource Lang}, XPath=h7}"></TextBlock>
         <CheckBox Grid.Row="1" Content="{Binding Source={StaticResource Lang}, XPath=h8}"
-                  Name="ChkLayer" Margin="10,2,2,2"
+                  Name="ChkLayer"
                   Checked="Chk_OnChecked_OnUnchecked"
                   Unchecked="Chk_OnChecked_OnUnchecked"
                   ></CheckBox>
         <CheckBox Grid.Row="2" Content="{Binding Source={StaticResource Lang}, XPath=h9}"
-                  Name="ChkScales" Margin="10,2,2,2"
+                  Name="ChkScales"
                   Checked="Chk_OnChecked_OnUnchecked"
                   Unchecked="Chk_OnChecked_OnUnchecked"
                   ></CheckBox>
         <CheckBox Grid.Row="3" Content="{Binding Source={StaticResource Lang}, XPath=h10}"
-                  Name="ChkTransform" Margin="10,2,2,2"
+                  Name="ChkTransform"
                   Checked="Chk_OnChecked_OnUnchecked"
                   Unchecked="Chk_OnChecked_OnUnchecked"
                   ></CheckBox>
         <CheckBox Grid.Row="4" Content="{Binding Source={StaticResource Lang}, XPath=h11}"
-                  Name="ChkRotation" Margin="10,2,2,2"
+                  Name="ChkRotation"
                   Checked="Chk_OnChecked_OnUnchecked"
                   Unchecked="Chk_OnChecked_OnUnchecked"
                   ></CheckBox>
         <StackPanel Grid.Row="5" Orientation="Horizontal">
-            <TextBlock Text="{Binding Source={StaticResource Lang}, XPath=h12}" Margin="2"
-                       VerticalAlignment="Center"></TextBlock>
-            <ComboBox Margin="2" VerticalAlignment="Center" Name="CbCleanBD"
-                      Width="180"
+            <TextBlock Text="{Binding Source={StaticResource Lang}, XPath=h12}" 
+                       Margin="{DynamicResource ModPlusDefaultMargin}"></TextBlock>
+            <ComboBox VerticalAlignment="Center" Name="CbCleanBD" Width="180"
                       SelectionChanged="CbCleanBD_OnSelectionChanged">
                 <ComboBoxItem Content="{Binding Source={StaticResource Lang}, XPath=h13}"></ComboBoxItem>
                 <ComboBoxItem Content="{Binding Source={StaticResource Lang}, XPath=h14}"></ComboBoxItem>
                 <ComboBoxItem Content="{Binding Source={StaticResource Lang}, XPath=h15}"></ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <Button Grid.Row="6" Margin="2"
-                VerticalAlignment="Center" HorizontalAlignment="Center"
+        <Button Grid.Row="6" HorizontalAlignment="Center"
                 Content="{Binding Source={StaticResource Lang}, XPath=h16}"
                 ToolTip="{Binding Source={StaticResource Lang}, XPath=h17}"
                 Name="BtOk" Click="BtOk_OnClick"></Button>
     </Grid>
-</mpc:BaseMetroWindow>
+</mps:ModPlusWindow>
 
